@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>حساب العميل</title>
+</head>
+<body>
+  <h1>مرحبًا، <span id="user-name"></span></h1>
+  <p><strong>البريد الإلكتروني:</strong> <span id="user-email"></span></p>
+  <h3>الرصيد المتاح: <span id="balance">0.00</span> دولار</h3>
+  <h3>طرق الدفع:</h3>
+  <!-- PayPal Button -->
+  <div id="paypal-container"></div>
+  <script src="https://www.paypal.com/sdk/js?client-id=BAAaNVLvgfJQcHe8QhYT-UHFElc9rbbc0DDhdJqEw3ohOrmCZr28F3tnKg6UJnIgp9M492QeFOU49LVanY&amp;components=hosted-buttons&amp;disable-funding=venmo&amp;currency=USD"></script>
+  <script>
+    paypal.HostedButtons({
+        hostedButtonId: "HUFTQG3HFXRJW",
+    }).render("#paypal-container");
+  </script>
+  <h3>سحب عبر PayPal و TRC20</h3>
+  <p>لإتمام السحب، اختر طريقة الدفع وأدخل التفاصيل:</p>
+  <select id="withdraw-method">
+    <option value="paypal">PayPal</option>
+    <option value="trc20">TRC20</option>
+  </select>
+  <br><br>
+  <div id="paypal-info">
+    <label for="paypal-email">البريد الإلكتروني لبايبال:</label>
+    <br>
+    <input type="email" id="paypal-email" placeholder="أدخل بريد بايبال">
+    <br><br>
+  </div>
+  <div id="trc20-info" style="display: none;">
+    <label for="trc20-wallet">عنوان TRC20:</label>
+    <br>
+    <input type="text" id="trc20-wallet" value="TQkHHVUfQC6oZ6rZYxNuUL32EvCAyM8Rd2" readonly>
+    <br><br>
+    <button onclick="copyTRC20()">نسخ العنوان</button>
+    <br><br>
+    <span>عنوان TRC20: <strong id="trc20-address">TQkHHVUfQC6oZ6rZYxNuUL32EvCAyM8Rd2</strong></span>
+    <br><br>
+  </div>
+  <h3>استمارة السحب</h3>
+  <p>يرجى ملء النموذج التالي لإتمام
